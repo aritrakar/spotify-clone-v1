@@ -9,10 +9,10 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import { Grid, Slider } from "@material-ui/core";
-import { useDataLayerValue } from "../../../DataLayer";
+//import { useDataLayerValue } from "../../../DataLayer";
 
 export default function Footer() {
-  const [{ item, playing }, dispatch] = useDataLayerValue(); //albumImage
+  //const [{ item, playing }, dispatch] = useDataLayerValue(); //albumImage
   return (
     <div className="footer">
       <div className="footer__left">
@@ -26,18 +26,31 @@ export default function Footer() {
           <p>Artist name</p>
         </div>
       </div>
-      <div className="footer__center">
-        <ShuffleIcon className="footer__green" />
-        <SkipPreviousIcon className="footer__icon" />
-        <PlayCircleOutlineIcon
-          id="play__circle"
-          className="footer__icon"
-          fontSize="large"
-          //onClick={togglePlaying(playing, dispatch)}
-        />
-        <SkipNextIcon className="footer__icon" />
-        <RepeatIcon className="footer__green" />
+      <div className="footer__center__main">
+        <div className="footer__center">
+          <div className="footer__icons">
+            <ShuffleIcon className="footer__green" />
+            <SkipPreviousIcon className="footer__icon" />
+            <PlayCircleOutlineIcon
+              id="play__circle"
+              className="footer__icon"
+              fontSize="large"
+              //onClick={togglePlaying(playing, dispatch)}
+            />
+            <SkipNextIcon className="footer__icon" />
+            <RepeatIcon className="footer__green" />
+          </div>
+
+          <div className="slider">
+            <p>0:00</p>
+            <Grid item xs>
+              <Slider />
+            </Grid>
+            <p>3:00</p>
+          </div>
+        </div>
       </div>
+
       <div className="footer__right">
         <Grid container spacing={2}>
           <Grid item>

@@ -10,7 +10,18 @@ import {
 } from "@material-ui/icons";
 
 export default function Body({ spotify }) {
-  const [{ discover_weekly }, dispatch] = useDataLayerValue();
+  const [{ discover_weekly }] = useDataLayerValue();
+  const tracksArray = [];
+  for (let i = 0; i < discover_weekly?.tracks.items.length; i++) {
+    tracksArray.push(
+      <SongRow
+        index={i + 1}
+        key={i}
+        track={discover_weekly?.tracks.items[i].track}
+        duration={discover_weekly?.tracks.items[i].track.duration_ms}
+      />
+    );
+  }
   return (
     <div className="body">
       <Header spotify={spotify} />
@@ -19,7 +30,9 @@ export default function Body({ spotify }) {
         <img src={discover_weekly?.images[0]?.url} alt="" />
         <div className="body__infoText">
           <strong>PLAYLIST</strong>
-          <h2>Discover Weekly</h2>
+          <h2>
+            <strong>Discover Weekly</strong>
+          </h2>
           <p>{discover_weekly?.description}</p>
         </div>
       </div>
@@ -29,11 +42,22 @@ export default function Body({ spotify }) {
           <FavoriteBorder fontSize="large" className="body__other" />
           <MoreHoriz className="body__other" />
         </div>
-
-        {discover_weekly?.tracks.items.map((item) => {
-          return <SongRow track={item.track} />;
-        })}
+        <div className="title__text">
+          <h4 className="hash">#</h4>
+          <h4 className="title">TITLE</h4>
+          <h4 className="album">ALBUM</h4>
+          <h4 className="date">DATE ADDED</h4>
+          <h4 className="time">TIME</h4>
+        </div>
+        <hr className="hr" />
+        {tracksArray}
       </div>
     </div>
   );
 }
+
+/*
+{discover_weekly?.tracks.items.map((item, key) => {
+          return <SongRow track={item.track} />;
+        })}
+        */

@@ -3,16 +3,19 @@
   display: flex;
   justify-content: space-between;
   bottom: 0;
-  height: 50px;
-  width: 97%;
+  height: 40px;
+  width: 98%;
   background-color: #282828;
   padding: 20px;
   color: white;
+  align-items: center;
 }
 
 .footer__right * .MuiSlider-root {
   color: green;
+  max-width: 100px;
 }
+
 .footer__left {
   flex: 0.3;
   display: flex;
@@ -35,8 +38,16 @@
   font-size: 12px;
 }
 
-.footer__center {
+.footer__center__main {
   flex: 0.4;
+}
+
+.footer__center {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__icons {
   padding: 0 100px;
   display: flex;
   align-items: center;
@@ -55,8 +66,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  justify-items: end;
 }
 
 .footer__green {
-  color: #1ed15e;
+  color: #1db954;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+}
+
+.slider * .MuiSlider-root {
+  max-width: 500px;
+  color: #1db954;
+}
+
+.slider > p {
+  font-size: 9px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

@@ -7,7 +7,7 @@ import SidebarOption from "./SidebarOption";
 import { useDataLayerValue } from "../../../DataLayer";
 
 export default function Sidebar() {
-  const [{ playlists }, dispatch] = useDataLayerValue();
+  const [{ playlists }] = useDataLayerValue();
 
   return (
     <div className="sidebar">

@@ -1,10 +1,10 @@
 .body {
-  border: 3px solid red;
   padding: 30px;
   flex: 0.85;
   height: 100vh;
   color: white;
-  overflow-y: overlay;
+  overflow-y: auto;
+  padding-bottom: 70px;
   background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
 }
 
@@ -44,6 +44,42 @@
 .body__icons > .MuiSvgIcon-root {
   margin-right: 20px;
 }
+
+.title__text {
+  display: flex;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 14px;
+  color: grey;
+  justify-content: space-between;
+}
+
+.hash {
+  flex: 0.05;
+}
+
+.title {
+  flex: 0.5;
+}
+
+.album {
+  flex: 0.2;
+}
+
+.date {
+  flex: 0.125;
+}
+
+.time {
+  flex: 0.125;
+}
+
+.hr {
+  margin: 10px 20px 10px 20px;
+  color: white;
+  background-color: #040404;
+}
+
 .body__songs {
   margin: 20px -30px;
 }

@@ -24,6 +24,12 @@ function App() {
       });
       console.log("TOKEN: ", _token);
       spotify.setAccessToken(_token);
+
+      dispatch({
+        type: "SET_SPOTIFY",
+        spotify: spotify,
+      });
+
       spotify.getMe().then((user) => {
         dispatch({
           type: "SET_USER",
@@ -42,6 +48,7 @@ function App() {
       spotify
         .getUserPlaylists({ options: { limit: null } })
         .then((playlists) => {
+          console.log(playlists);
           dispatch({
             type: "SET_PLAYLISTS",
             playlists: playlists,
@@ -49,9 +56,14 @@ function App() {
         });
 
       spotify.getPlaylist("37i9dQZEVXcUgUERTsWnNT").then((response) => {
+        // 37i9dQZEVXcUgUERTsWnNT
         dispatch({
           type: "SET_DISCOVER_WEEKLY",
           discover_weekly: response,
+        });
+        dispatch({
+          type: "SET_CURRENT_PLAYLIST",
+          current_playlist: response,
         });
       });
     }

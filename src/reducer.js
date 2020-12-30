@@ -1,7 +1,9 @@
 export const initialState = {
+  spotify: null,
   user: null,
   devices: null,
   playlists: [],
+  current_playlist: null,
   playing: false,
   item: null,
   shuffle: false,
@@ -15,9 +17,10 @@ export const initialState = {
 };
 
 const reducer = (state, action) => {
-  //console.log("ACTION", action);
-
   switch (action.type) {
+    case "SET_SPOTIFY":
+      return { ...state, spotify: action.spotify };
+
     case "SET_USER":
       return { ...state, user: action.user };
 
@@ -26,6 +29,9 @@ const reducer = (state, action) => {
 
     case "SET_PLAYLISTS":
       return { ...state, playlists: action.playlists };
+
+    case "SET_CURRENT_PLAYLIST":
+      return { ...state, current_playlist: action.current_playlist };
 
     case "TOGGLE_PLAYING":
       return { ...state, playing: action.playing };

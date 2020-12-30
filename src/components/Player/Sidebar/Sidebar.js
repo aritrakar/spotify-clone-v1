@@ -23,7 +23,9 @@ export default function Sidebar() {
       <strong className="sidebar__title">PLAYLISTS</strong>
       <hr />
       {playlists?.items?.map((playlist, key) => {
-        return <SidebarOption key={key} option={playlist.name} />;
+        return (
+          <SidebarOption key={key} option={playlist.name} playlist={playlist} />
+        );
       })}
     </div>
   );

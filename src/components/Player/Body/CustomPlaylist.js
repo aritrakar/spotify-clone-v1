@@ -9,16 +9,16 @@ import {
   PlayCircleFilledOutlined,
 } from "@material-ui/icons";
 
-export default function Body({ spotify }) {
-  const [{ discover_weekly, token }, dispatch] = useDataLayerValue();
+export default function CustomPlaylist({ playlist }) {
+  const [{ spotify, token }, dispatch] = useDataLayerValue();
 
   const playPlaylist = () => {
-    console.log("Clicked playPlaylist button, id:", discover_weekly?.uri);
+    console.log("Clicked playPlaylist button, id:", playlist?.uri);
     console.log("TOKEN: ", token);
     spotify
       .play({
         access_token: token,
-        context_uri: discover_weekly?.uri,
+        context_uri: playlist?.uri,
       })
       .then((res) => {
         spotify.getMyCurrentPlayingTrack().then((r) => {
@@ -57,14 +57,14 @@ export default function Body({ spotify }) {
 
   const tracksArray = [];
   const durations = [];
-  for (let i = 0; i < discover_weekly?.tracks.items.length; i++) {
-    const t = formatTime(discover_weekly?.tracks.items[i].track.duration_ms);
+  for (let i = 0; i < playlist?.tracks?.items.length; i++) {
+    const t = formatTime(playlist?.tracks.items[i].track.duration_ms);
     tracksArray.push(
       <SongRow
         index={i + 1}
         key={i}
-        track={discover_weekly?.tracks.items[i].track}
-        date={discover_weekly?.tracks.items[i].added_at}
+        track={playlist?.tracks.items[i].track}
+        date={playlist?.tracks.items[i].added_at}
         duration={t}
         playSong={playSong}
       />
@@ -75,17 +75,17 @@ export default function Body({ spotify }) {
   return (
     <div className="body">
       <Header spotify={spotify} />
-      <img src={discover_weekly?.images[0]?.url} alt="" id="blurred" />
+      <img src={playlist?.images[0]?.url} alt="" id="blurred" />
       <div className="body__info">
-        <img src={discover_weekly?.images[0]?.url} alt="" />
+        <img src={playlist?.images[0]?.url} alt="" />
         <div className="body__infoText">
           <strong>PLAYLIST</strong>
           <h2>
-            <strong>{discover_weekly?.name}</strong>
+            <strong>{playlist?.name}</strong>
           </h2>
-          <p>{discover_weekly?.description}</p>
+          <p>{playlist?.description}</p>
           <p>
-            {discover_weekly?.tracks?.total} songs - {sumTime(durations)}
+            {playlist?.tracks?.total} songs - {sumTime(durations)}
           </p>
         </div>
       </div>

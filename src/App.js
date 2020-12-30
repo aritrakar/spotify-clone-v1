@@ -12,21 +12,30 @@ function App() {
 
   useEffect(() => {
     const hash = getTokenFromUrl();
+
     window.location.hash = "";
     const _token = hash.access_token;
+
     if (_token) {
+      console.log("HASH: ", hash);
       dispatch({
         type: "SET_TOKEN",
         token: _token,
       });
-
-      //console.log("Token received:", _token);
-
+      console.log("TOKEN: ", _token);
       spotify.setAccessToken(_token);
       spotify.getMe().then((user) => {
         dispatch({
           type: "SET_USER",
           user: user,
+        });
+      });
+
+      spotify.getMyDevices().then((devices) => {
+        console.log("DEVICES: ", devices);
+        dispatch({
+          type: "SET_DEVICES",
+          devices: devices,
         });
       });
 
@@ -47,7 +56,7 @@ function App() {
       });
     }
   });
-
+  console.log("TOKEN2: ", token);
   return (
     <div className="App">
       {token ? <Player spotify={spotify} /> : <Login />}

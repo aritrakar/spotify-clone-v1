@@ -5,7 +5,7 @@
   color: white;
   overflow-y: auto;
   padding-bottom: 70px;
-  background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
+  background: linear-gradient(#ef8fb7, rgba(0, 0, 0, 1));
 }
 
 .body::-webkit-scrollbar {
@@ -82,6 +82,7 @@
 
 .body__songs {
   margin: 20px -30px;
+  background: linear-gradient(rgba(61, 61, 61, 0.4), rgba(0, 0, 0, 1));
 }
 
 .body__shuffle {

@@ -6,10 +6,23 @@ import Footer from "./Footer/Footer";
 import { useDataLayerValue } from "../../DataLayer";
 import CustomPlaylist from "./Body/CustomPlaylist";
 
-export default function Player({ spotify }) {
-  const [{ current_playlist }] = useDataLayerValue();
+export default function Player() {
+  const [{ current_playlist, spotify }, dispatch] = useDataLayerValue();
 
-  useEffect(() => {});
+  useEffect(() => {
+    spotify.getMyCurrentPlaybackState().then((r) => {
+      console.log("getMyCurrentPlaybackState: ", r);
+
+      dispatch({
+        type: "SET_PLAYING",
+        playing: r.is_playing,
+      });
+      dispatch({
+        type: "SET_ITEM",
+        item: r.item,
+      });
+    });
+  });
 
   return (
     <div className="player">

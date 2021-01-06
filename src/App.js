@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     const hash = getTokenFromUrl();
-
+    console.log("HASH: ", hash);
     window.location.hash = "";
     const _token = hash.access_token;
 
